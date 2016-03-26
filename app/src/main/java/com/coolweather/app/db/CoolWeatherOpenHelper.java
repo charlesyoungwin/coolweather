@@ -3,6 +3,7 @@ package com.coolweather.app.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 /**
  * Created by charlesyoung on 2016/3/21.
@@ -38,15 +39,22 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
             + "country_code text, "
             + "city_id integer) ";
 
+    private Context mContext;
+
     public CoolWeatherOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
                                  int version){
         super(context,name,factory,version);
+        mContext = context;
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        db.execSQL(CREATE_PROVINCE);
+        db.execSQL(CREATE_CITY);
+        db.execSQL(CREATE_COUNTRY);
+        Toast.makeText(mContext,"Create succeeded",Toast.LENGTH_SHORT).show();
     }
 
     @Override

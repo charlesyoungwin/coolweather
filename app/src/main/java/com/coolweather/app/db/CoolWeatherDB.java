@@ -19,7 +19,7 @@ public class CoolWeatherDB {
     /**
      * 数据库名
      */
-    public static final String DB_NAME = "cool_weather";
+    public static final String DB_NAME = "cool_weather.db";
     /**
      * 数据库版本
      */
@@ -32,7 +32,7 @@ public class CoolWeatherDB {
      */
     private CoolWeatherDB(Context context){
         CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context,
-                DB_NAME,null,VERSION);
+                DB_NAME, null,VERSION);
         db = dbHelper.getWritableDatabase();
     }
 
@@ -121,7 +121,6 @@ public class CoolWeatherDB {
              ContentValues values = new ContentValues();
              values.put("country_name", country.getCountryName());
              values.put("country_code", country.getCountryCode());
-             values.put("city_id",country.getCityId());
              values.put("city_id",country.getCityId());
              db.insert("Country", null, values);
          }
